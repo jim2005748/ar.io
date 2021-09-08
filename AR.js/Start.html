@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+	    <title>Start</title>
+        <meta charset="utf-8" /> 
+		<script src="js/aframe.min.js"></script>
+		<script src="js/aframe-ar.js"></script>
+	</head> 
+
+	<body style="margin: 0px; overflow: hidden;">
+	
+		<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false;">
+		  
+			<a-assets>
+				<img id="brick_wall" src="assets/image/brick_wall_003_diffuse_1k.jpg" />
+				<audio id="Sunspots" src="assets/Audio/Sunspots.ogg" ></audio>
+			</a-assets>
+		
+		<a-marker type="pattern" url = "data/hiro.patt">
+		
+            <a-entity>
+
+                <a-box id ="box" position ="0 0.5 0" src="#brick_wall" color ="red" opacity ="0.9"></a-box>
+                <!--<a-sphere id="sphere" radius="1" position="0 0.5 0" rotation="0 0 0" scale ="0 0 0" opacity="0.9" sound="src:#Sunspots"></a-sphere>-->
+
+            </a-entity>
+
+			</a-marker>
+
+
+			<a-entity camera>
+				<a-cusor></a-cusor>
+			</a-entity>
+
+			</a-scene>
+
+		</body>
+
+			<script>
+				var audio_name = document.getElementById("sphere");
+				audio_name.addEventListener("mouseenter", function () {
+					console.log("滑鼠進入了");
+					audio_name.components.sound.playSound();
+				}
+				audio_name.addEventListener("mouseleave", function () {
+					console.log("滑鼠離開了");
+					audio_name.components.sound.pauseSound();
+				}
+
+			</script> 
+
+	</html>
